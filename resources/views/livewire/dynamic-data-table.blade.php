@@ -4,6 +4,22 @@
         <div class="mb-4 text-green-700">{{ session('success') }}</div>
     @endif
 
+    <!-- Column Selection UI -->
+    <div class="mb-4">
+        <label class="font-semibold">Select Columns:</label>
+        <div class="flex flex-wrap gap-4 mt-2">
+            @foreach($allAvailableColumns as $key => $label)
+                <label class="flex items-center space-x-1">
+                    <input type="checkbox"
+                        value="{{ $key }}"
+                        wire:model="columns"
+                        class="rounded border-gray-300">
+                    <span>{{ $label }}</span>
+                </label>
+            @endforeach
+        </div>
+    </div>
+
     <!-- Top controls: dynamic filters and soft delete toggle -->
     <div class="flex flex-wrap gap-3 mb-4">
         @foreach($filterConfig as $field => $type)

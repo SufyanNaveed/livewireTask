@@ -16,6 +16,7 @@ class DynamicDataTable extends Component
     public array $filters = [];        // holds filter values e.g. ['name'=>'foo']
     public string $showSoftDeleted = 'without'; // 'without'|'with'|'only'
     public bool $showAddForm = false;  // control add-new form visibility
+    public $allAvailableColumns = [];
     public array $newItem = [
         'name' => '',
         'description' => '',
@@ -37,6 +38,15 @@ class DynamicDataTable extends Component
         $showSoftDeleted = 'without',
         $showAddForm = false
     ) {
+        
+        $this->allAvailableColumns = [
+            'id' => 'ID',
+            'name' => 'Name',
+            'description' => 'Description',
+            'price' => 'Price',
+            'created_at' => 'Created Date',
+        ];
+        
         $this->columns = $columns;
         $this->filterConfig = $filterConfig;
         $this->showSoftDeleted = $showSoftDeleted;
